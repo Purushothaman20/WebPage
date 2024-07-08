@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table</title>
+    <style>
+        /* Add your custom styling here */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically generated here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Sample data (replace with your JSON data)
+        const jsonData = [
+            { id: 1, name: 'Arun', age: 25 },
+            { id: 2, name: 'Varun', age: 30 },
+            // ... more data
+        ];
+
+        // Function to populate the table
+        function populateTable(data) {
+            const tableBody = document.querySelector('#myTable tbody');
+            tableBody.innerHTML = '';
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.name}</td>
+                    <td>${item.age}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initial population (you can fetch data from the server)
+        populateTable(jsonData);
+
+        // Example: Sort by age (ascending)
+        const sortedData = jsonData.slice().sort((a, b) => a.age - b.age);
+        populateTable(sortedData);
+
+        // Example: Pagination (show 5 rows per page)
+        const itemsPerPage = 5;
+        const currentPage = 1; // Replace with actual current page
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const paginatedData = sortedData.slice(startIndex, startIndex + itemsPerPage);
+        populateTable(paginatedData);
+    </script>
+</body>
+</html>

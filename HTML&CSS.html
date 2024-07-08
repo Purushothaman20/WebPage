@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Slider</title>
+    <style>
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slide {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            flex-shrink: 0;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .arrow.left {
+            left: 10px;
+        }
+        .arrow.right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">Slide 1</div>
+            <div class="slide">Slides</div>
+            <!-- Add more slides here -->
+        </div>
+        <div class="arrow left" onclick="moveSlider(-1)">‹</div>
+        <div class="arrow right" onclick="moveSlider(1)">›</div>
+    </div>
+    <script>
+    </script>
+</body>
+</html>
